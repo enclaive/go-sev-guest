@@ -136,6 +136,7 @@ const (
 	zen5Family     = 0x1A
 	milanModel     = 0 | 1
 	genoaModel     = (1 << 4) | 1
+	sienaModel     = (1 << 7) | (1 << 5)
 	turinModel     = 2
 
 	// ReportVersion2 is set by the SNP API specification
@@ -1037,6 +1038,8 @@ func SevProductFromCpuid1Eax(eax uint32) *pb.SevProduct {
 		case milanModel:
 			productName = pb.SevProduct_SEV_PRODUCT_MILAN
 		case genoaModel:
+			productName = pb.SevProduct_SEV_PRODUCT_GENOA
+		case sienaModel:
 			productName = pb.SevProduct_SEV_PRODUCT_GENOA
 		default:
 			unknown()
